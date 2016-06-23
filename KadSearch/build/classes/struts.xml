@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>
+
+    <!-- Add packages here -->
+    <constant name="struts.devMode" value="true" />
+    <package name="kad" extends="json-default" namespace="/">
+              
+        <action name="index" class="kad.IndexAction">
+			<result name="success">
+				/index.jsp
+			</result>
+		</action>
+		
+		
+		<action name="searchShow" class="kad.IndexAction" method="searchShow">
+			<result name="success">
+			
+				<param name="location">query.jsp</param>
+				<param name="ignoreHierarchy">false</param>
+				
+			</result>
+		</action>
+        
+        <action name="search" class="kad.IndexAction" method="query">
+            <result name="success" type="json">
+            	<param name="ignoreHierarchy">false</param>
+            </result>
+            
+        </action>
+        
+        <action name="page" class="kad.IndexAction" method="getPage">
+            <result name="success" type="json">
+            	<param name="ignoreHierarchy">false</param>
+            </result>
+            
+        </action>
+        
+    </package>
+</struts>
